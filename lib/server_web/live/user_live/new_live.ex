@@ -21,7 +21,7 @@ defmodule ServerWeb.User.NewLive do
       |> Map.put(:btn_label, "Sign up")
       |> Map.put(
         :style_width_error,
-        Helpers.get_width_error(assigns.user, ["name", "surname", "score"])
+        Helpers.get_width_error(assigns.user, ["name", "surname", "password", "conf_password"])
       )
     )
   end
@@ -62,7 +62,7 @@ defmodule ServerWeb.User.NewLive do
 
     case Validation.submit_if_valid(
            user,
-           ["name", "surname", "score"],
+           ["name", "surname", "password", "conf_password"],
            #  &CreateUser.add_new/1
            fn _ -> IO.puts("User was created") end
          ) do
@@ -78,7 +78,8 @@ defmodule ServerWeb.User.NewLive do
     %{
       "name" => Validation.field(""),
       "surname" => Validation.field(""),
-      "score" => Validation.optional_field("")
+      "password" => Validation.field(""),
+      "conf_password" => Validation.field("")
     }
   end
 end

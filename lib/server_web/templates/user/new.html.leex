@@ -35,11 +35,21 @@
                             <%= render ServerWeb.ComponentsView,
                                 "row_form.html",
                                 form: f,
-                                field_name: :score,
-                                label: "Score",
-                                placeholder: "55",
-                                value: raw_value(@user["score"]),
-                                errors: extract_error_or_errors(@user["score"]),
+                                field_name: :password,
+                                label: "Password",
+                                placeholder: "",
+                                value: raw_value(@user["password"]),
+                                errors: extract_error_or_errors(@user["password"]),
+                                error_length: @style_width_error
+                            %>
+                            <%= render ServerWeb.ComponentsView,
+                                "row_form.html",
+                                form: f,
+                                field_name: :conf_password,
+                                label: "Confirm password",
+                                placeholder: "",
+                                value: raw_value(@user["conf_password"]),
+                                errors: extract_error_or_errors(@user["conf_password"]),
                                 error_length: @style_width_error
                             %>
                             <div class="columns is-mobile is-centered">
