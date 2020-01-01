@@ -18,7 +18,7 @@ defmodule ServerWeb.User.NewLive do
     ServerWeb.UserView.render(
       "new.html",
       assigns
-      |> Map.put(:btn_label, "Add user")
+      |> Map.put(:btn_label, "Sign up")
       |> Map.put(
         :style_width_error,
         Helpers.get_width_error(assigns.user, ["name", "surname", "score"])

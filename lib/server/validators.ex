@@ -26,12 +26,38 @@ defmodule Server.Validators do
 
   @spec name(String.t()) :: Result.t(String.t(), String.t())
   defp name(value) do
-    Validators.not_empty(value, "Name is required!")
+    min = 3
+    max = 10
+
+    [
+      Validators.not_empty(value, "Name is required!"),
+      value
+      |> String.length()
+      |> Kernel.to_string()
+      |> Validators.in_range(
+        min,
+        max,
+        "Name has to be at most #{min} and at least #{max} lenght!"
+      )
+    ]
+    |> Result.product()
+    |> Result.map(&hd/1)
   end
 
   @spec surname(String.t()) :: Result.t(String.t(), String.t())
   defp surname(value) do
-    Validators.not_empty(value, "Surname is required!")
+    min = 5
+    max = 10
+
+    [
+      Validators.not_empty(value, "Surname is required!"),
+      value
+      |> String.length()
+      |> Kernel.to_string()
+      |> Validators.at_least(min, "Surname has to be at most #{min} lenght!")
+    ]
+    |> Result.product()
+    |> Result.map(&hd/1)
   end
 
   @spec score(String.t()) :: Result.t(String.t(), String.t())

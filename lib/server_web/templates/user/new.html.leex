@@ -1,9 +1,9 @@
-<section class="hero is-fullheight-with-navbar">
+<section class="hero">
     <div class="section">
         <div class="columns is-centered">
                 <div class="column is-half has-background-light">
                     <h1 class="title has-text-centered is-size-3 is-size-5-mobile">
-                        Adding new user
+                        Register user
                     </h1>
                 </div>
         </div>
@@ -42,11 +42,17 @@
                                 errors: extract_error_or_errors(@user["score"]),
                                 error_length: @style_width_error
                             %>
-                            <%= render ServerWeb.ComponentsView,
-                                "buttons.html",
-                                label: @btn_label,
-                                disabled: false
-                            %>
+                            <div class="columns is-mobile is-centered">
+                                <div class="column-12">
+                                    <div class="field">
+                                        <div class="control">
+                                        <button class="button has-background-info">
+                                            <%= @btn_label %>
+                                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
