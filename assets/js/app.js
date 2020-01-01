@@ -1,4 +1,4 @@
-import scss from "../css/app.scss"
+import "../css/app.scss"
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
@@ -6,11 +6,12 @@ import scss from "../css/app.scss"
 //
 // Import dependencies
 //
+import {Socket} from "phoenix"
 import "phoenix_html"
 
 import LiveSocket from "phoenix_live_view"
 
-let liveSocket = new LiveSocket("/live")
+let liveSocket = new LiveSocket("/live", Socket)
 liveSocket.connect()
 
 // Import local files
