@@ -1,0 +1,39 @@
+<%=if not Enum.empty?(@errors) do %>
+    <div class="<%= @error_length %>">
+        <%=if Kernel.length(@errors) == 1 do %>
+            <div class="error">
+                <div class="error-icon">
+                    <span class="icon">
+                        <i class="fas fa-times-circle"></i>
+                    </span>
+                </div>
+                <div class="error-body">
+                    <%= @errors %>
+                </div>
+            </div>
+        <% else %>
+            <div class="error one-error">
+                <div class="error-icon">
+                    <span class="icon">
+                        <i class="fas fa-times-circle"></i>
+                    </span>
+                </div>
+                <div class="error-body">
+                    contains a few errors, click to input form <%= @label %>
+                </div>
+            </div>
+            <%= for error <- @errors do %>
+                <div class="error many-errors">
+                    <div class="error-icon">
+                        <span class="icon">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                    </div>
+                    <div class="error-body">
+                        <%= error %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>

@@ -1,0 +1,35 @@
+<div class="columns" id="catch-input-focus">
+    <div class="column is-4">
+        <div class="field">
+            <div class="field-label is-normal">
+                <label class="label">
+                  <%= @label %>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-4">
+        <div class="field">
+            <p class="control">
+                <%= text_input @form,
+                    @field_name,
+                    phx_blur: :on_blur,
+                    phx_value_field: @field_name,
+                    class: add_warning_style_if_field_has(@errors),
+                    placeholder: @placeholder,
+                    value: @value
+                %>
+            </p>
+        </div>
+    </div>
+
+    <div class="column is-4">
+        <%= render ServerWeb.ComponentsView,
+            "form_error.html",
+            label: @label,
+            errors: @errors,
+            error_length: add_width_for(@error_length)
+        %>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+@import '../helpers/variables';
+
+
+$pad: 6px;
+
+.errors {
+    color: $error__color;
+    font-size: .75rem;
+    background-color: $error__bg-color;
+    border-radius: 4px;
+    padding: $pad 0 $pad 0;
+    // position: absolute;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        margin-left: -10px;
+        margin-top: 2px;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid $error__bg-color;
+    }
+}
+
+.error {
+    align-items: baseline;
+    display: flex;
+    text-align: left;
+    height: 100%;
+    padding: 0 $pad 0 $pad;
+
+    &-icon {
+        margin-right: 3px;
+    }
+
+    &-body {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+        text-align: left;
+    }
+
+    &-width-120 {
+        max-width: 120px;
+    }
+
+    &-width-220 {
+        max-width: 220px;
+    }
+}
+
+#catch-input-focus:focus-within .one-error {
+    display: none;
+}
+
+#catch-input-focus .many-errors {
+    display: none;
+}
+
+#catch-input-focus:focus-within .many-errors {
+    display: flex;
+}
