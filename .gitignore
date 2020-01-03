@@ -38,3 +38,19 @@ npm-debug.log
 /priv/static/
 
 .vscode/
+
+# Backup
+*~
+
+tmp/
+.envs*
+.vimrc
+.projections.json
+
+# tags
+tags
+tags.*
+*.tags
+
+.DS_Store
+.deliver/releases/
