@@ -12,7 +12,8 @@ defmodule Server.Validators do
         "name" => &name/1,
         "surname" => &surname/1,
         "password" => &password/1,
-        "conf_password" => &conf_password/2
+        "conf_password" => &conf_password/1
+        # "conf_password" => &password/1
       },
       field
     )
@@ -75,8 +76,8 @@ defmodule Server.Validators do
     |> Result.map(&hd/1)
   end
 
-  @spec conf_password(String.t(), String.t()) :: Result.t(String.t(), String.t())
-  defp conf_password(pass, conf_pass) do
-    Validators.equal_to(pass, conf_pass, "The passwords don't match!")
+  @spec conf_password(Validation.field(any(), a)) :: (a -> Result.t(String.t(), a)) when a: var
+  defp conf_password(pass) do
+    &Validators.equal_to?(&1, pass, "The passwords don't match!")
   end
 end

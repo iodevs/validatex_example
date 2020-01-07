@@ -4,7 +4,9 @@ defmodule ServerWeb.User.NewLive do
 
   alias Server.Validators
   alias ServerWeb.User.Helpers
-  alias Validatex.Validation
+  alias Validatex.{Validation, MapExtra}
+
+  require Logger
 
   def mount(_session, socket) do
     socket =
@@ -28,6 +30,67 @@ defmodule ServerWeb.User.NewLive do
 
   def handle_event(
         "on_change",
+        %{"_target" => ["user", "password"], "user" => data},
+        %{assigns: %{user: user}} = socket
+      ) do
+    user =
+      user
+      |> Validation.validate_on_change(
+        "password",
+        MapExtra.get!(data, "password"),
+        Validators.validator_for("password")
+      )
+      |> Validation.validate_on_related_change(
+        "conf_password",
+        "password",
+        Validators.validator_for("conf_password")
+      )
+
+    {:noreply,
+     assign(
+       socket,
+       :user,
+       user
+     )}
+  end
+
+  def handle_event(
+        "on_change",
+        %{"_target" => ["user", "conf_password"], "user" => data},
+        %{assigns: %{user: user}} = socket
+      ) do
+    {:noreply,
+     assign(
+       socket,
+       :user,
+       Validation.validate_on_change(
+         user,
+         "conf_password",
+         MapExtra.get!(data, "conf_password"),
+         Validators.validator_for("conf_password").(user["password"])
+       )
+     )}
+  end
+
+  def handle_event(
+        "on_blur",
+        %{"field" => "conf_password"},
+        %{assigns: %{user: user}} = socket
+      ) do
+    {:noreply,
+     assign(
+       socket,
+       :user,
+       Validation.validate_on_blur(
+         user,
+         "conf_password",
+         Validators.validator_for("conf_password").(user["password"])
+       )
+     )}
+  end
+
+  def handle_event(
+        "on_change",
         %{"_target" => ["user", field], "user" => data},
         %{assigns: %{user: user}} = socket
       ) do
@@ -38,7 +101,7 @@ defmodule ServerWeb.User.NewLive do
        Validation.validate_on_change(
          user,
          field,
-         Helpers.get!(data, field),
+         MapExtra.get!(data, field),
          Validators.validator_for(field)
        )
      )}
@@ -58,15 +121,27 @@ defmodule ServerWeb.User.NewLive do
   end
 
   def handle_event("add_user", _params, %{assigns: %{user: user}} = socket) do
-    user = Validation.validate_on_submit(user, &Validators.validator_for/1)
+    user =
+      user
+      |> Validation.validate_on_submit("name", Validators.validator_for("name"))
+      |> Validation.validate_on_submit("surname", Validators.validator_for("surname"))
+      |> Validation.validate_on_submit("password", Validators.validator_for("password"))
+      |> Validation.validate_on_related_submit(
+        "conf_password",
+        "password",
+        Validators.validator_for("conf_password")
+      )
 
     case Validation.submit_if_valid(
            user,
            ["name", "surname", "password", "conf_password"],
            #  &CreateUser.add_new/1
-           fn _ -> IO.puts("User was created") end
+           fn user ->
+             Logger.info(fn -> "CREATED USER: #{inspect(user)}" end)
+             Result.ok(user)
+           end
          ) do
-      {:ok, _user} ->
+      {:ok, _} ->
         {:noreply, assign(socket, user: new_user())}
 
       _ ->
