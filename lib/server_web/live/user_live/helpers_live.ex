@@ -5,7 +5,6 @@ defmodule ServerWeb.User.Helpers do
 
   # alias Model.Validators
   alias Validatex.Validation
-  import Validatex.Validation, only: [key?: 1]
 
   @spec extract_error_or_errors(Validation.field(any(), any())) :: [String.t()]
   def extract_error_or_errors(field) do
@@ -27,10 +26,6 @@ defmodule ServerWeb.User.Helpers do
     |> Enum.map(fn field -> extract_error_or_errors(user[field]) end)
     |> List.flatten()
     |> Enum.uniq()
-  end
-
-  def get!(map, key) when is_map(map) and key?(key) do
-    Map.get(map, key) || raise "Key '#{key}' not found in '#{inspect(map)}'."
   end
 
   # Private
