@@ -10,9 +10,7 @@ defmodule ServerWeb.User.NewLive do
 
   def handle_params(
         %{
-          "conf_password" => _cp,
           "name" => name,
-          "password" => _p,
           "surname" => surname
         },
         _uri,

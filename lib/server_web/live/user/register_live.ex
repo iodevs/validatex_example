@@ -167,5 +167,6 @@ defmodule ServerWeb.User.RegisterLive do
     user
     |> Enum.map(fn {k, v} -> {k, Validation.raw_value(v)} end)
     |> Map.new()
+    |> Map.drop(["password", "conf_password"])
   end
 end
