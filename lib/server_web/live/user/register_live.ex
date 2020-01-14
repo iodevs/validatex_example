@@ -4,7 +4,7 @@ defmodule ServerWeb.User.RegisterLive do
 
   alias Server.Validators
   alias ServerWeb.User.Helpers
-  alias Validatex.{Validation, MapExtra}
+  alias Validatex.{MapExtra, Validation}
 
   require Logger
 
@@ -17,7 +17,7 @@ defmodule ServerWeb.User.RegisterLive do
   end
 
   def render(assigns) do
-    ServerWeb.UserView.render(
+    ServerWeb.RegisterView.render(
       "register.html",
       assigns
       |> Map.put(:btn_label, "Sign up")
@@ -142,12 +142,17 @@ defmodule ServerWeb.User.RegisterLive do
            end
          ) do
       {:ok, _} ->
-        {:noreply, assign(socket, user: new_user())}
+        {:noreply,
+         live_redirect(socket,
+           to: Routes.live_path(socket, ServerWeb.User.NewLive, raw_user_data(user))
+         )}
 
       _ ->
         {:noreply, assign(socket, user: user)}
     end
   end
+
+  # Private
 
   defp new_user() do
     %{
@@ -156,5 +161,11 @@ defmodule ServerWeb.User.RegisterLive do
       "password" => Validation.field(""),
       "conf_password" => Validation.field("")
     }
+  end
+
+  defp raw_user_data(user) do
+    user
+    |> Enum.map(fn {k, v} -> {k, Validation.raw_value(v)} end)
+    |> Map.new()
   end
 end

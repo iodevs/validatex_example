@@ -1,0 +1,31 @@
+<section class="hero">
+    <div class="section">
+        <div class="columns is-centered">
+                <div class="column is-half has-background-light">
+                    <h1 class="title has-text-centered is-size-3 is-size-5-mobile">
+                        Welcome <%= @name %> <%= @surname %>
+                    </h1>
+                </div>
+        </div>
+        <div class="columns is-centered has-padding-top-20">
+            <div class="column is-8">
+                <div class="columns">
+                    <div class="column is-12">
+                        <div class="columns is-mobile is-centered">
+                            <div class="column-12">
+                                <div class="field">
+                                    <div class="control">
+                                        <%= live_link class: "button has-background-info",
+                                            to: Routes.live_path(@socket, ServerWeb.User.RegisterLive, %{}) do %>
+                                            Log out
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

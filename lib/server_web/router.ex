@@ -19,6 +19,7 @@ defmodule ServerWeb.Router do
     pipe_through :browser
 
     live "/", User.RegisterLive
+    live "/new", User.NewLive
   end
 
   # Other scopes may use custom stacks.
