@@ -1,4 +1,4 @@
-defmodule ServerWeb.User.NewLive do
+defmodule ServerWeb.User.RegisterLive do
   @moduledoc false
   use ServerWeb, :live
 
@@ -18,7 +18,7 @@ defmodule ServerWeb.User.NewLive do
 
   def render(assigns) do
     ServerWeb.UserView.render(
-      "new.html",
+      "register.html",
       assigns
       |> Map.put(:btn_label, "Sign up")
       |> Map.put(

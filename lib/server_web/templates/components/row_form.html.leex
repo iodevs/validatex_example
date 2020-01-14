@@ -12,13 +12,13 @@
     <div class="column is-4">
         <div class="field">
             <p class="control">
-                <%= text_input @form,
+                <%= @type.(@form,
                     @field_name,
                     phx_blur: :on_blur,
                     phx_value_field: @field_name,
                     class: add_warning_style_if_field_has(@errors),
                     placeholder: @placeholder,
-                    value: @value
+                    value: @value)
                 %>
             </p>
         </div>

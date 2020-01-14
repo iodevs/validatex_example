@@ -18,7 +18,7 @@ defmodule ServerWeb.Router do
   scope "/", ServerWeb do
     pipe_through :browser
 
-    live "/", User.NewLive
+    live "/", User.RegisterLive
   end
 
   # Other scopes may use custom stacks.

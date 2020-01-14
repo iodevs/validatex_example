@@ -14,6 +14,7 @@
                         <%= f = form_for :user, "#", [phx_change: :on_change, phx_submit: :add_user] %>
                             <%= render ServerWeb.ComponentsView,
                                 "row_form.html",
+                                type: &text_input/3,
                                 form: f,
                                 field_name: :name,
                                 label: "Name",
@@ -24,6 +25,7 @@
                             %>
                             <%= render ServerWeb.ComponentsView,
                                 "row_form.html",
+                                type: &text_input/3,
                                 form: f,
                                 field_name: :surname,
                                 label: "Surname",
@@ -34,6 +36,7 @@
                             %>
                             <%= render ServerWeb.ComponentsView,
                                 "row_form.html",
+                                type: &password_input/3,
                                 form: f,
                                 field_name: :password,
                                 label: "Password",
@@ -44,6 +47,7 @@
                             %>
                             <%= render ServerWeb.ComponentsView,
                                 "row_form.html",
+                                type: &password_input/3,
                                 form: f,
                                 field_name: :conf_password,
                                 label: "Confirm password",
