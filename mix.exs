@@ -43,7 +43,7 @@ defmodule Server.MixProject do
   defp deps do
     [
       validatex_dep(Mix.env(), "0.3.0"),
-      {:phoenix_live_view, "~> 0.4.1"},
+      {:phoenix_live_view, "~> 0.5.2"},
       {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_html, "~> 2.11"},
@@ -54,7 +54,7 @@ defmodule Server.MixProject do
       {:result, "~> 1.5.0"},
       {:ex_maybe, "~> 1.1.1"},
       {:credo, "~> 1.1.0", only: [:dev, :test]},
-      {:excoveralls, "~> 0.11.1", only: [:dev, :test]},
+      {:excoveralls, "~> 0.12.1", only: [:dev, :test]},
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false}
     ]
   end

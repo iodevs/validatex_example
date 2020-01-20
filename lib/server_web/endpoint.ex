@@ -1,9 +1,11 @@
 defmodule ServerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :server
 
+  @session_options [store: :cookie, key: "_server_key", signing_salt: "suzTf/KE"]
+
   socket "/live", Phoenix.LiveView.Socket,
     longpoll: false,
-    websocket: [timeout: 45_000]
+    websocket: [connect_info: [session: @session_options], timeout: 45_000]
 
   socket "/socket", ServerWeb.UserSocket,
     websocket: [timeout: 45_000],
@@ -41,10 +43,7 @@ defmodule ServerWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_server_key",
-    signing_salt: "suzTf/KE"
+  plug Plug.Session, @session_options
 
   plug ServerWeb.Router
 end
