@@ -17,7 +17,7 @@ defmodule ServerWeb.User.RegisterLive do
   end
 
   def render(assigns) do
-    ServerWeb.RegisterView.render(
+    ServerWeb.UserView.render(
       "register.html",
       assigns
       |> Map.put(:btn_label, "Sign up")
