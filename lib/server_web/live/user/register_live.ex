@@ -8,7 +8,7 @@ defmodule ServerWeb.User.RegisterLive do
 
   require Logger
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     socket =
       socket
       |> assign(user: new_user())

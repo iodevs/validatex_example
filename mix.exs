@@ -43,7 +43,7 @@ defmodule Server.MixProject do
   defp deps do
     [
       validatex_dep(Mix.env(), "0.3.0"),
-      {:phoenix_live_view, "~> 0.5.2"},
+      {:phoenix_live_view, "~> 0.6.0"},
       {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_html, "~> 2.11"},
