@@ -42,7 +42,7 @@ defmodule Server.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      validatex_dep(Mix.env(), "0.3.0"),
+      validatex_dep(Mix.env(), "1.0.1"),
       {:phoenix_live_view, "~> 0.6.0"},
       {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.1"},
