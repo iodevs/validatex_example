@@ -83,7 +83,7 @@ defmodule Server.MixProject do
   defp dialyzer_base() do
     [
       plt_add_deps: :transitive,
-      # ignore_warnings: "dialyzer.ignore-warnings",
+      ignore_warnings: "dialyzer.ignore-warnings",
       flags: [
         :unmatched_returns,
         :error_handling,
