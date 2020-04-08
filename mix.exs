@@ -43,19 +43,19 @@ defmodule Server.MixProject do
   defp deps do
     [
       validatex_dep(Mix.env(), "1.0.1"),
-      {:phoenix_live_view, "~> 0.6.0"},
+      {:phoenix_live_view, "~> 0.11.1"},
       {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.1"},
-      {:phoenix_html, "~> 2.11"},
+      {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:result, "~> 1.5.0"},
       {:ex_maybe, "~> 1.1.1"},
-      {:credo, "~> 1.1.0", only: [:dev, :test]},
+      {:credo, "~> 1.3.2", only: [:dev, :test]},
       {:excoveralls, "~> 0.12.1", only: [:dev, :test]},
-      {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0.0", only: [:dev], runtime: false}
     ]
   end
 
@@ -72,9 +72,9 @@ defmodule Server.MixProject do
     ]
   end
 
-  defp validatex_dep(:dev, _tag) do
-    {:validatex, path: "../validatex", override: true}
-  end
+  #   defp validatex_dep(:dev, _tag) do
+  #     {:validatex, path: "../validatex", override: true}
+  #   end
 
   defp validatex_dep(_, tag) do
     {:validatex, "~> #{tag}"}
