@@ -5,7 +5,10 @@ defmodule ServerWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket,
     longpoll: false,
-    websocket: [connect_info: [session: @session_options], timeout: 45_000]
+    websocket: [
+      connect_info: [session: @session_options],
+      timeout: 45_000
+    ]
 
   socket "/socket", ServerWeb.UserSocket,
     websocket: [timeout: 45_000],
