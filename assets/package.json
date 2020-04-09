@@ -15,7 +15,7 @@
         "@babel/preset-env": "^7.9.5",
         "@fortawesome/fontawesome-free": "5.13.0",
         "babel-loader": "^8.1.0",
-        "bulma": "^0.8.1",
+        "bulma": "^0.7.5",
         "bulma-extensions": "^6.2.7",
         "bulma-helpers": "^0.3.10",
         "copy-webpack-plugin": "^5.1.1",

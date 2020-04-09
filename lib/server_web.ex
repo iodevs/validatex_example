@@ -24,13 +24,13 @@ defmodule ServerWeb do
       import Plug.Conn
       import ServerWeb.Gettext
       alias ServerWeb.Router.Helpers, as: Routes
-      import Phoenix.LiveView.Controller, only: [live_render: 3]
+      import Phoenix.LiveView.Controller
     end
   end
 
   def live() do
     quote do
-      use Phoenix.LiveView
+      use Phoenix.LiveView, layout: {ServerWeb.LayoutView, "live.html"}
       import ServerWeb.Gettext
       alias ServerWeb.Router.Helpers, as: Routes
     end

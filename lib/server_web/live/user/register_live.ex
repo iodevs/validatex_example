@@ -143,7 +143,7 @@ defmodule ServerWeb.User.RegisterLive do
          ) do
       {:ok, _} ->
         {:noreply,
-         live_redirect(socket,
+         push_redirect(socket,
            to: Routes.live_path(socket, ServerWeb.User.NewLive, raw_user_data(user))
          )}
 

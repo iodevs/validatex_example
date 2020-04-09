@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import "../../deps/phoenix_live_view/assets/css/live_view.css";
+// @import "../../deps/phoenix_live_view/assets/css/live_view.css";
 
 // Import Font Awesome icons
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
@@ -30,7 +30,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 // @import 'base/reset';
 // @import 'base/typography';
 
-// @import 'layout/navigation';
+@import 'layout/navigation';
 @import 'layout/grid';
 // @import 'layout/forms';
 

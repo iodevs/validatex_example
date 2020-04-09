@@ -1,0 +1,5 @@
+<p><%= live_flash(@flash, :notice) %></p>
+<p><%= live_flash(@flash, :error) %></p>
+
+<%= live_render(@socket, ServerWeb.HeaderLive, container: {:header, []}, id: "header") %>
+<%= @inner_content %>

@@ -39,7 +39,7 @@ defmodule Server.Validators do
       |> Validators.in_range(
         min,
         max,
-        "Lenght of name has to be at most #{min} and at least #{max}!"
+        "Lenght of name has to be at least #{min} and at most #{max}!"
       )
     ]
     |> Result.product()
@@ -55,7 +55,7 @@ defmodule Server.Validators do
       value
       |> String.length()
       |> Kernel.to_string()
-      |> Validators.at_least(max, "Surname has to be at most length of #{max}!")
+      |> Validators.at_least(max, "Too short surname!")
     ]
     |> Result.product()
     |> Result.map(&hd/1)

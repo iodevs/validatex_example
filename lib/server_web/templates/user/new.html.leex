@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero is-fullheight-with-navbar">
     <div class="section">
         <div class="columns is-centered">
             <div class="column is-7 has-background-light">
@@ -15,7 +15,7 @@
                             <div class="column-12">
                                 <div class="field">
                                     <div class="control">
-                                        <%= live_link class: "button has-background-info",
+                                        <%= live_patch class: "button has-background-info btn__width",
                                             to: Routes.live_path(@socket, ServerWeb.User.RegisterLive, %{}) do %>
                                             Log out
                                         <% end %>
@@ -29,3 +29,5 @@
         </div>
     </div>
 </section>
+
+
