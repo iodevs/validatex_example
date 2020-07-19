@@ -1,4 +1,4 @@
-import "../css/app.scss"
+import "../css/app.scss";
 
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
@@ -9,7 +9,7 @@ import "../css/app.scss"
 import { Socket } from "phoenix"
 import "phoenix_html"
 
-import LiveSocket from "phoenix_live_view"
+import LiveSocket from "phoenix_live_view";
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken } });

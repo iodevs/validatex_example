@@ -12,7 +12,7 @@ config :server, ServerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "3ajcTA6eUQ9AA15jwsbN4LtmjaQF+Op9pPThMKDtTyZm5Lp83VzDoSvGTnGsMQl8P",
   render_errors: [view: ServerWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Server.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: Server.PubSub,
   live_view: [
     signing_salt: "SECRET_SALT"
   ]

@@ -43,19 +43,19 @@ defmodule Server.MixProject do
   defp deps do
     [
       validatex_dep(Mix.env(), "1.0.1"),
-      {:credo, "~> 1.3.2", only: [:dev, :test]},
+      {:credo, "~> 1.4.0", only: [:dev, :test]},
       {:dialyxir, "~> 1.0.0", only: [:dev], runtime: false},
-      {:excoveralls, "~> 0.12.1", only: [:dev, :test]},
+      {:excoveralls, "~> 0.13.0", only: [:dev, :test]},
       {:ex_maybe, "~> 1.1.1"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:phoenix, "~> 1.4.16"},
+      {:phoenix, "~> 1.5.3"},
       {:phoenix_html, "~> 2.14"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.11.1"},
+      {:phoenix_live_view, "~> 0.14.1"},
       {:plug_cowboy, "~> 2.0"},
-      {:result, "~> 1.5.0"}
+      {:result, "~> 1.6.0"}
     ]
   end
 
