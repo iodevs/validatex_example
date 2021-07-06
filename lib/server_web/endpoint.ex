@@ -1,18 +1,20 @@
 defmodule ServerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :server
 
-  @session_options [store: :cookie, key: "_server_key", signing_salt: "suzTf/KE"]
-
-  socket "/live", Phoenix.LiveView.Socket,
-    longpoll: false,
-    websocket: [
-      connect_info: [session: @session_options],
-      timeout: 45_000
-    ]
+  # The session will be stored in the cookie and signed,
+  # this means its contents can be read but not tampered with.
+  # Set :encryption_salt if you would also like to encrypt it.
+  @session_options [
+    store: :cookie,
+    key: "_server_key",
+    signing_salt: "l/qRxvCV"
+  ]
 
   socket "/socket", ServerWeb.UserSocket,
-    websocket: [timeout: 45_000],
+    websocket: true,
     longpoll: false
+
+  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -32,6 +34,10 @@ defmodule ServerWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  plug Phoenix.LiveDashboard.RequestLogger,
+    param_key: "request_logger",
+    cookie_key: "request_logger"
+
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
@@ -42,11 +48,6 @@ defmodule ServerWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  # The session will be stored in the cookie and signed,
-  # this means its contents can be read but not tampered with.
-  # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session, @session_options
-
   plug ServerWeb.Router
 end

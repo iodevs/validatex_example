@@ -11,6 +11,7 @@ defmodule Server.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
       deps: deps(),
       package: package(),
       test_coverage: [tool: ExCoveralls],
@@ -43,23 +44,38 @@ defmodule Server.MixProject do
   defp deps do
     [
       validatex_dep(Mix.env(), "1.0.1"),
-      {:credo, "~> 1.4.0", only: [:dev, :test]},
-      {:dialyxir, "~> 1.0.0", only: [:dev], runtime: false},
-      {:excoveralls, "~> 0.13.0", only: [:dev, :test]},
+      {:credo, "~> 1.5.6", only: [:dev, :test]},
+      {:dialyxir, "~> 1.1.0", only: [:dev], runtime: false},
+      {:excoveralls, "~> 0.14.1", only: [:dev, :test]},
       {:ex_maybe, "~> 1.1.1"},
+      {:floki, ">= 0.27.0", only: :test},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:phoenix, "~> 1.5.3"},
-      {:phoenix_html, "~> 2.14"},
-      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix, "~> 1.5.7"},
+      {:phoenix_html, "~> 2.11"},
+      {:phoenix_live_dashboard, "~> 0.4"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.14.1"},
+      {:phoenix_live_view, "~> 0.15.7"},
       {:plug_cowboy, "~> 2.0"},
-      {:result, "~> 1.6.0"}
+      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_poller, "~> 0.4"},
+      {:result, "~> 1.6.0"}      
     ]
   end
 
-  defp package do
+  # Aliases are shortcuts or tasks specific to the current project.
+  # For example, to install project dependencies and perform other setup tasks, run:
+  #
+  #     $ mix setup
+  #
+  # See the documentation for `Mix` for more info on aliases.
+  defp aliases do
+    [
+      setup: ["deps.get", "cmd npm install --prefix assets"]
+    ]
+  end
+
+defp package do
     [
       maintainers: [
         "Jindrich K. Smitka <smitka.j@gmail.com>",

@@ -21,7 +21,10 @@
 </head>
 
 <body>
-    <%= @inner_content %>
+  <%= @inner_content %>
+  <div class="liveview-version">
+    <strong>LiveView</strong>: 0.15.7
+  </div>
 </body>
 
 </html>

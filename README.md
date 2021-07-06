@@ -1,13 +1,17 @@
-
 # Example of using [Validatex](https://github.com/iodevs/validatex) library
 
 ![](docs/register_user.gif)
 
-## Install
-To start your Phoenix server:
+## Install mix and node dependencies
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `cd .. && mix phx.server`
+```
+mix setup
+```
+
+## Start your Phoenix server:
+
+```
+mix phx.server
+```
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.

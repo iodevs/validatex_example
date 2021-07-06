@@ -1,80 +1,76 @@
 <section class="hero is-fullheight-with-navbar">
-    <div class="section">
-        <div class="columns is-centered">
-                <div class="column is-10-tablet is-8-desktop-only is-7-widescreen has-background-light">
-                    <h1 class="title has-text-centered is-size-3 is-size-5-mobile">
-                        Register user
-                    </h1>
-                </div>
-        </div>
-        <div class="columns is-centered has-padding-top-20">
-            <div class="column is-8">
-                <div class="columns">
-                    <div class="column is-12">
-                        <%= f = form_for :user, "#", [phx_change: :on_change, phx_submit: :add_user] %>
-                            <%= render ServerWeb.ComponentsView,
-                                "row_form.html",
-                                type: &text_input/3,
-                                form: f,
-                                field_name: :name,
-                                label: "Name",
-                                placeholder: "Rick",
-                                value: raw_value(@user["name"]),
-                                errors: extract_error_or_errors(@user["name"]),
-                                error_length: @style_width_error
-                            %>
-                            <%= render ServerWeb.ComponentsView,
-                                "row_form.html",
-                                type: &text_input/3,
-                                form: f,
-                                field_name: :surname,
-                                label: "Surname",
-                                placeholder: "Sanchez",
-                                value: raw_value(@user["surname"]),
-                                errors: extract_error_or_errors(@user["surname"]),
-                                error_length: @style_width_error
-                            %>
-                            <%= render ServerWeb.ComponentsView,
-                                "row_form.html",
-                                type: &password_input/3,
-                                form: f,
-                                field_name: :password,
-                                label: "Password",
-                                placeholder: "",
-                                value: raw_value(@user["password"]),
-                                errors: extract_error_or_errors(@user["password"]),
-                                error_length: @style_width_error
-                            %>
-                            <%= render ServerWeb.ComponentsView,
-                                "row_form.html",
-                                type: &password_input/3,
-                                form: f,
-                                field_name: :conf_password,
-                                label: "Confirm password",
-                                placeholder: "",
-                                value: raw_value(@user["conf_password"]),
-                                errors: extract_error_or_errors(@user["conf_password"]),
-                                error_length: @style_width_error
-                            %>
-                            <div class="columns is-mobile is-centered">
-                                <div class="column-12">
-                                    <div class="field">
-                                        <div class="control">
-                                        <button class="button has-background-info btn__width">
-                                            <%= @btn_label %>
-                                        </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="liveview-version">
-	<strong>LiveView</strong>: 0.14.4
-    </div>
+	<div class="section">
+		<div class="columns is-centered">
+			<div class="column is-10-tablet is-8-desktop-only is-7-widescreen has-background-light">
+				<h1 class="title has-text-centered is-size-3 is-size-5-mobile">
+					Register user
+				</h1>
+			</div>
+		</div>
+		<div class="columns is-centered has-padding-top-20">
+			<div class="column is-8">
+				<div class="columns">
+					<div class="column is-12">
+						<%= f = form_for :user, "#", [phx_change: :on_change, phx_submit: :add_user] %>
+							<%= render ServerWeb.ComponentsView,
+								"row_form.html",
+								type: &text_input/3,
+								form: f,
+								field_name: :name,
+								label: "Name",
+								placeholder: "Rick",
+								value: raw_value(@user["name"]),
+								errors: extract_error_or_errors(@user["name"]),
+								error_length: @style_width_error
+							%>
+							<%= render ServerWeb.ComponentsView,
+								"row_form.html",
+								type: &text_input/3,
+								form: f,
+								field_name: :surname,
+								label: "Surname",
+								placeholder: "Sanchez",
+								value: raw_value(@user["surname"]),
+								errors: extract_error_or_errors(@user["surname"]),
+								error_length: @style_width_error
+							%>
+							<%= render ServerWeb.ComponentsView,
+								"row_form.html",
+								type: &password_input/3,
+								form: f,
+								field_name: :password,
+								label: "Password",
+								placeholder: "",
+								value: raw_value(@user["password"]),
+								errors: extract_error_or_errors(@user["password"]),
+								error_length: @style_width_error
+							%>
+							<%= render ServerWeb.ComponentsView,
+								"row_form.html",
+								type: &password_input/3,
+								form: f,
+								field_name: :conf_password,
+								label: "Confirm password",
+								placeholder: "",
+								value: raw_value(@user["conf_password"]),
+								errors: extract_error_or_errors(@user["conf_password"]),
+								error_length: @style_width_error
+							%>
+							<div class="columns is-mobile is-centered">
+								<div class="column-12">
+									<div class="field">
+										<div class="control">
+											<button class="button has-background-info btn__width">
+												<%= @btn_label %>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
