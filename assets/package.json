@@ -26,7 +26,7 @@
     "hard-source-webpack-plugin": "^0.13.1",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^8.0.0",
-    "npm-check-updates": "^11.8.1",
+    "npm-check-updates": "^16.7.4",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^13.2.0",
     "terser-webpack-plugin": "^3.0.2",
